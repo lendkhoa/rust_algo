@@ -2,9 +2,9 @@
 
 // arguments: array slice, array length, target integer
 // return the index
-pub fn search(a: &[i32], len: usize, target: &i32) -> Option<usize> {
+pub fn search(a: &[i32], target: &i32) -> Option<usize> {
     let mut low_index: i8 = 0;
-    let mut hi_index: i8 = len as i8 - 1;
+    let mut hi_index: i8 = a.len() as i8 - 1;
 
     while low_index <= hi_index {
         let mid = ((hi_index - low_index) / 2) + low_index;
@@ -36,7 +36,7 @@ mod tests {
 		199, 200, 210, 222
 		];
         for i in 0..correct_arr.len() {
-            assert_eq!(i, search(&correct_arr, correct_arr.len(), &correct_arr[i]).unwrap());
+            assert_eq!(i, search(&correct_arr, &correct_arr[i]).unwrap());
         }
     }
     #[test]
@@ -52,7 +52,7 @@ mod tests {
 		201, 211, 2242
 		];
         for i in 0..incorrect_arr.len() {
-            assert_eq!(None, search(&searched_arr, searched_arr.len(), &incorrect_arr[i]));
+            assert_eq!(None, search(&searched_arr, &incorrect_arr[i]));
         }
     }
 }
