@@ -12,27 +12,27 @@ pub fn reverse_linked_list_example() {
     let mut current = list.get(0);
 
     // TODO 
-    while current != None {
-        let mut next = Some(unsafe { (current) });
-        match current.next {
-            None => return,
-            Some(ptr) => (
-                unsafe {
-                    (*ptr.as_ptr()).next = prev;
-                }
-            ),
-        }
-        println!("Good");
-    }
+    // while current != None {
+    //     let mut next = Some(unsafe { (current) });
+    //     match current.next {
+    //         None => return,
+    //         Some(ptr) => (
+    //             unsafe {
+    //                 (*ptr.as_ptr()).next = prev;
+    //             }
+    //         ),
+    //     }
+    //     println!("Good");
+    // }
 
-    for i in 0..size {
-        match list.get(i as i32) {
-            Some(ptr) => {
-                println!("{}", ptr);
-            },
-            None => return,
-        }
-    }
+    // for i in 0..size {
+    //     match list.get(i as i32) {
+    //         Some(ptr) => {
+    //             println!("{}", ptr);
+    //         },
+    //         None => return,
+    //     }
+    // }
 }
 
 
