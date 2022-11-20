@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 pub fn two_sum_example() {
 	let nums = vec![1,2,34,56,343];
-	let target = 36;
+	let target = 360;
 	println!("Looking for sum {:?} within the vector {:?}", target, nums);
 	println!("These indices has sum of values = target{:?}", two_sum(&nums, &target));
 }
@@ -19,7 +19,7 @@ fn two_sum(nums: &Vec<i32>, target: &i32) -> Vec<i32> {
 			}
 			seen.insert(*nums.get(i).unwrap(), i as i32);
 	}
-	vec![0,0]
+	vec![-1,-1]
 }
 
 #[cfg(test)]
