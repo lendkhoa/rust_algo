@@ -11,11 +11,15 @@ use std::collections::LinkedList;
 //use data_structures::Node;
 //use data_structures::LinkedList;
 use search::search_examples;
+use algo::cses_problems::weird_algorithm;
+use std::io;
 
-fn main() {
+fn main() -> io::Result<()> {
     //linked_list_problems::reverse_linked_list_example();
     //search_examples::binary_search_example();
     //two_sum_problem::two_sum_example()
-    fibonacci_examples::finbonacci_examples();
+    // fibonacci_examples::finbonacci_examples();
+    weird_algorithm::find_sequence(7);
 
+    Ok(())
 }
