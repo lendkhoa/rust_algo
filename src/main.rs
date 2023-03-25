@@ -12,6 +12,7 @@ use std::collections::LinkedList;
 //use data_structures::LinkedList;
 use search::search_examples;
 use algo::cses_problems;
+use algo::cses_problems::increasing_array;
 use std::io;
 
 fn main() -> io::Result<()> {
@@ -20,7 +21,7 @@ fn main() -> io::Result<()> {
     //two_sum_problem::two_sum_example()
     // fibonacci_examples::finbonacci_examples();
     // cses_problems::weird_algorithm::find_sequence(7);
-    cses_problems::missing_number::find_missing_number();
+    // cses_problems::missing_number::find_missing_number();
 
     Ok(())
 }
