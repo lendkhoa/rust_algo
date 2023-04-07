@@ -13,6 +13,7 @@ use std::collections::LinkedList;
 use search::search_examples;
 use algo::cses_problems;
 use algo::cses_problems::increasing_array;
+use algo::cses_problems::generate_permutations;
 use std::io;
 
 fn main() -> io::Result<()> {
@@ -22,6 +23,7 @@ fn main() -> io::Result<()> {
     // fibonacci_examples::finbonacci_examples();
     // cses_problems::weird_algorithm::find_sequence(7);
     // cses_problems::missing_number::find_missing_number();
+    generate_permutations::generate_permutation(3);
 
     Ok(())
 }
