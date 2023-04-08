@@ -1,4 +1,5 @@
 use std::convert::TryInto;
+use std::io;
 
 struct PermutationGenerator {
 	n: i32,
@@ -39,7 +40,6 @@ impl PermutationGenerator {
 			temp.push(*value)
 		}
 		&self.results.push(temp.to_vec());
-		println!("{:?}", self.results);
 	}
 
 	fn print_vector(&self) {
@@ -60,31 +60,74 @@ impl PermutationGenerator {
 }
 
 pub
-fn generate_permutation(n: i32) -> Vec<i32> {
+fn generate_permutation(n: i32) -> Vec<Vec<i32>> {
 	let mut generator = PermutationGenerator::new(n);	
 	generator.search();
-	generator.permutations
+	println!("{:?}", generator.results);
+	generator.results
 }
+
+pub
+fn beautiful_permutation(n: i32) -> io::Result<()> {
+	let mut generator = PermutationGenerator::new(n);	
+	generator.search();
+	// check if there is beautiful permutation
+	let mut found_beautiful = false;
+	for vector in generator.results {
+		if beautiful(&vector) {
+			for val in vector {
+				print!("{} ", val)
+			}			
+			found_beautiful = true;
+			break; // found the 1st beautiful permutation
+			print!("\n")
+		}
+	}
+	if !found_beautiful {
+		print!("NO SOLUTION");
+	}
+	Ok(())
+}
+
+fn beautiful(vector: &Vec<i32>) -> bool {
+	let mut i = 1;
+	while i < vector.len() {
+		// println!("Comparing {}th: {}, with {}th: {}. Diff #{}", i, vector[i], i - 1, vector[i-1], (vector[i]-vector[i-1]).abs());
+		if (vector[i] - vector[i-1]).abs() == 1 {
+			return false;
+		}
+		i += 1;
+	}
+	true
+}
+
+// FOR CSES SUBMISSION
+// fn main() -> io::Result<()> {
+// 	let mut n = String::new();
+// 	io::stdin().read_line(&mut n).expect("Failed");
+// 	let number: i32 = n.trim().parse().expect("Input not an integer");
+
+// 	beautiful_permutation(number);
+		
+// 	Ok(())
+// }
 
 #[cfg(test)]
 mod generate_permutation_test {
 	use super::*;
 
-	// #[test]
-	// fn test_1() {
-	// 	let mut expected: Vec<Vec<i32>> = vec![
-	// 		vec![1, 2, 3],
-	// 		vec![1, 3, 2],
-	// 		vec![2, 1, 3],
-	// 		vec![2, 3, 1],
-	// 		vec![3, 1, 2],
-	// 		vec![3, 2, 1],
-	// 	];
-	// }
+	#[test]
+	fn test_1() {
+		let mut expected: Vec<Vec<i32>> = vec![
+			vec![1, 2, 3],
+			vec![1, 3, 2],
+			vec![2, 1, 3],
+			vec![2, 3, 1],
+			vec![3, 1, 2],
+			vec![3, 2, 1],
+		];
 
-	// #[test]
-	// fn test_2() {
-	// 	assert_eq!(8, nth_fibonacci(6));
-	// 	assert_eq!(13, nth_fibonacci(7));
-	// }
+		assert_eq!(expected, generate_permutation(3));
+	}
+
 }
